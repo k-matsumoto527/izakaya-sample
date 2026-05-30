@@ -1120,13 +1120,15 @@
       .footer-tel-block { text-align: left; }
     }
 
+    .sp-only { display: none; }
+
     /* スマートフォン */
     @media (max-width: 480px) {
-      .hero { justify-content: center; }
-      .hero-content { width: 100%; text-align: center; }
+      .sp-only { display: inline; }
+      .hero-content { position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; padding: 0 28px 0; }
       .hero-eyebrow { justify-content: center; }
       .hero h1 { font-size: 2rem; letter-spacing: 3px; }
-      .hero-desc { white-space: normal; font-size: 0.82rem; }
+      .hero-desc { white-space: normal; font-size: 0.82rem; margin-bottom: 16px; }
       .hero-actions { flex-direction: column; gap: 12px; align-items: center; }
       .hero-actions .btn { text-align: center; }
 
@@ -1181,7 +1183,7 @@
   <div class="hero-content">
 
     <h1>小さな灯りと、<br><em>うまい酒と肴。</em></h1>
-    <p class="hero-desc">思わず「ただいま」と言ってしまう、そんな雰囲気のお店です。</p>
+    <p class="hero-desc">思わず「ただいま」と言ってしまう、<br class="sp-only">そんな雰囲気のお店です。</p>
     <div class="hero-actions">
       <a href="#reserve" class="btn btn-amber">ご予約はこちら</a>
       <a href="#menu" class="btn btn-ghost">お品書きを見る</a>
