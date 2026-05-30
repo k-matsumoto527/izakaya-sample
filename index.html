@@ -1012,19 +1012,84 @@
     }
 
     /* ===== RESPONSIVE ===== */
+    /* ハンバーガーメニュー */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      transition: all 0.3s;
+    }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(13,12,10,0.98);
+      border-bottom: 1px solid rgba(200,130,10,0.2);
+      padding: 20px 24px 28px;
+      z-index: 99;
+    }
+
+    .nav-drawer.open { display: block; }
+
+    .nav-drawer ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .nav-drawer ul li a {
+      display: block;
+      padding: 14px 0;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s;
+    }
+
+    .nav-drawer ul li a:hover { color: var(--cream); }
+
+    .nav-drawer .drawer-reserve {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      border: 1px solid var(--amber);
+      color: var(--amber-lt);
+      padding: 12px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    /* タブレット */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
+      .nav-reserve-btn { display: none; }
+      .hamburger { display: flex; }
 
+      .hero { min-height: 100svh; }
       .hero-content { padding: 0 28px 80px; }
-      .hero h1 { font-size: 2.6rem; letter-spacing: 5px; }
-      .hero-kanji-deco { display: none; }
+      .hero h1 { font-size: 2.8rem; letter-spacing: 4px; }
       .hero-scroll { display: none; }
 
       .intro-section,
       .menu-section,
       .drink-section,
-      .atmos-section,
       .reserve-section,
       .master-section,
       .info-section { padding: 72px 24px; }
@@ -1040,12 +1105,6 @@
       .drink-label { writing-mode: horizontal-tb; letter-spacing: 4px; opacity: 0.4; }
       .drink-items { grid-template-columns: 1fr 1fr; }
 
-      .atmos-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, 200px);
-      }
-      .atmos-item:first-child { grid-row: span 1; grid-column: span 2; }
-
       .reserve-notes { grid-template-columns: 1fr; }
       .reserve-box { padding: 36px 24px; }
       .reserve-tel { font-size: 2.2rem; }
@@ -1060,6 +1119,28 @@
       .footer-top { flex-direction: column; }
       .footer-tel-block { text-align: left; }
     }
+
+    /* スマートフォン */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; letter-spacing: 3px; }
+      .hero-desc { white-space: normal; font-size: 0.82rem; }
+      .hero-actions { flex-direction: column; gap: 12px; }
+      .hero-actions .btn { text-align: center; }
+
+      .intro-img-main { height: 280px; }
+
+      .drink-items { grid-template-columns: 1fr; }
+
+      .reserve-tel { font-size: 1.8rem; letter-spacing: 2px; }
+
+      .section-title { font-size: 1.6rem; letter-spacing: 3px; }
+
+      .master-text h2 { font-size: 1.5rem; }
+
+      .info-row { grid-template-columns: 64px 1fr; }
+
+      .footer-links { flex-direction: column; gap: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -1073,9 +1154,22 @@
     <li><a href="#menu">お品書き</a></li>
     <li><a href="#master">大将について</a></li>
     <li><a href="#info">営業案内</a></li>
-    <li><a href="#reserve" class="nav-reserve">ご予約</a></li>
+    <li><a href="#reserve" class="nav-reserve nav-reserve-btn">ご予約</a></li>
   </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<!-- ドロワーメニュー -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="#menu" onclick="toggleMenu()">お品書き</a></li>
+    <li><a href="#master" onclick="toggleMenu()">大将について</a></li>
+    <li><a href="#info" onclick="toggleMenu()">営業案内</a></li>
+  </ul>
+  <a href="#reserve" class="drawer-reserve" onclick="toggleMenu()">ご予約</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1420,6 +1514,11 @@
 </footer>
 
 <script>
+  function toggleMenu() {
+    const drawer = document.getElementById('navDrawer');
+    drawer.classList.toggle('open');
+  }
+
   window.addEventListener('scroll', () => {
     document.getElementById('nav').style.boxShadow =
       window.scrollY > 40 ? '0 2px 32px rgba(0,0,0,0.5)' : 'none';
