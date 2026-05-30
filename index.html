@@ -116,21 +116,7 @@
       position: absolute;
       inset: 0;
       background:
-        url('image/logo.png') 90% center / cover no-repeat;
-    }
-
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(245,235,210,0.72) 0%,
-        rgba(245,235,210,0.2) 45%,
-        transparent 100%
-      );
-      pointer-events: none;
-      z-index: 0;
+        url('image/logo.png') center center / cover no-repeat;
     }
 
     /* 和紙テクスチャ風ノイズ */
@@ -1136,17 +1122,6 @@
 
     /* スマートフォン */
     @media (max-width: 480px) {
-      .hero-bg {
-        background-position: right top;
-      }
-      .hero-bg::before {
-        background: linear-gradient(
-          to top,
-          rgba(245,235,210,0.88) 0%,
-          rgba(245,235,210,0.45) 50%,
-          transparent 100%
-        );
-      }
       .hero h1 { font-size: 2rem; letter-spacing: 3px; }
       .hero-desc { white-space: normal; font-size: 0.82rem; }
       .hero-actions { flex-direction: column; gap: 12px; }
@@ -1173,7 +1148,7 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <span class="nav-logo-kanji">燈</span>
+    <img src="image/logo.png" alt="居酒屋 燈" style="height:36px;width:auto;object-fit:contain;">
   </a>
   <ul class="nav-links">
     <li><a href="#menu">お品書き</a></li>
@@ -1201,7 +1176,10 @@
   <div class="hero-bg"></div>
   <div class="hero-lantern">🏮</div>
   <div class="hero-content">
-
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Aichi · 15 seats · Est. 2012</span>
+    </div>
     <h1>小さな灯りと、<br><em>うまい酒と肴。</em></h1>
     <p class="hero-desc">思わず「ただいま」と言ってしまう、そんな雰囲気のお店です。</p>
     <div class="hero-actions">
