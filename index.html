@@ -1122,9 +1122,12 @@
 
     /* スマートフォン */
     @media (max-width: 480px) {
+      .hero { justify-content: center; }
+      .hero-content { width: 100%; text-align: center; }
+      .hero-eyebrow { justify-content: center; }
       .hero h1 { font-size: 2rem; letter-spacing: 3px; }
       .hero-desc { white-space: normal; font-size: 0.82rem; }
-      .hero-actions { flex-direction: column; gap: 12px; }
+      .hero-actions { flex-direction: column; gap: 12px; align-items: center; }
       .hero-actions .btn { text-align: center; }
 
       .intro-img-main { height: 280px; }
@@ -1176,10 +1179,7 @@
   <div class="hero-bg"></div>
   <div class="hero-lantern">🏮</div>
   <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span class="hero-eyebrow-text">Aichi · 15 seats · Est. 2012</span>
-    </div>
+
     <h1>小さな灯りと、<br><em>うまい酒と肴。</em></h1>
     <p class="hero-desc">思わず「ただいま」と言ってしまう、そんな雰囲気のお店です。</p>
     <div class="hero-actions">
